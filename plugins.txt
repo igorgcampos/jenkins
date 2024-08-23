@@ -1,0 +1,5 @@
+workflow-aggregator:2.6
+git:4.4.5
+docker-workflow:1.26
+credentials-binding:1.24
+
