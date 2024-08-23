@@ -15,7 +15,7 @@ RUN apk update && apk upgrade && \
     rm -rf /var/cache/apk/*
 
 # Configurar Jenkins para rodar como um usuário não-root
-RUN addgroup -S jenkins && adduser -S jenkins -G jenkins
+RUN addgroup -S jenkins || true && adduser -S jenkins -G jenkins || true
 RUN mkdir -p /var/jenkins_home /usr/share/jenkins/ref/init.groovy.d \
     && chown -R jenkins:jenkins /var/jenkins_home /usr/share/jenkins
 
