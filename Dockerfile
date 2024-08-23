@@ -1,16 +1,18 @@
 # Usar uma imagem base mínima
-FROM jenkins/jenkins:alpine3.20-jdk21
+FROM jenkins/jenkins:lts-alpine
 
 # Definir o usuário root para instalação de dependências
 USER root
 
 # Atualizar pacotes e instalar dependências mínimas
-RUN apk add --no-cache \
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
     git \
     docker \
     curl \
     bash \
-    openjdk11-jre
+    openjdk11-jre && \
+    rm -rf /var/cache/apk/*
 
 # Configurar Jenkins para rodar como um usuário não-root
 RUN addgroup -S jenkins && adduser -S jenkins -G jenkins
