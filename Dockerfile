@@ -10,6 +10,7 @@ RUN apk update && apk upgrade && \
     git \
     docker \
     curl \
+    sshpass \
     bash \
     openjdk11-jre && \
     rm -rf /var/cache/apk/*
