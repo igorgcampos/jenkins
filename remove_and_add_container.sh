@@ -20,7 +20,7 @@ docker rm "$CONTAINER_NAME"
 
 # Passo 3: Construir uma nova imagem Docker com o Dockerfile atualizado
 echo "Construindo a nova imagem Docker..."
-docker build -t jenkins/jenkins:lts-alpine .
+docker build -t jenkins .
 
 # Passo 4: Executar um novo contêiner Jenkins com a nova imagem
 echo "Iniciando um novo contêiner com o nome $CONTAINER_NAME..."
@@ -29,7 +29,8 @@ docker run -d \
   -p 50000:50000 \
   -v /var/jenkins_home:/var/jenkins_home \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  --group-add docker \
   --name "$CONTAINER_NAME" \
-  jenkins/jenkins:lts-alpine
+  jenkins
 
 echo "Novo contêiner Jenkins iniciado com sucesso."
