@@ -10,7 +10,7 @@ RUN apk update && apk upgrade && \
     git \
     docker \
     curl \
-    sshpass \
+    sshpass --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     bash \
     openjdk11-jre && \
     rm -rf /var/cache/apk/*
